@@ -15,7 +15,7 @@ import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 @Component
 public class Bot extends TelegramLongPollingBot {
 
-    private Integer id;
+    private Long id;
 
     public void sendMessage(Message message) throws TelegramApiException {
         StringBuilder sb = new StringBuilder();
@@ -31,7 +31,7 @@ public class Bot extends TelegramLongPollingBot {
 
     @Override
     public void onUpdateReceived(Update update) {
-        id = update.getUpdateId();
+        id = update.getMessage().getChatId();
     }
 
     @Override
