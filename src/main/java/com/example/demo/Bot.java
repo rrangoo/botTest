@@ -15,7 +15,7 @@ import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 @Component
 public class Bot extends TelegramLongPollingBot {
 
-    private Long id = 301653931L;
+    private Integer id;
 
     public void sendMessage(Message message) throws TelegramApiException {
         StringBuilder sb = new StringBuilder();
@@ -26,12 +26,12 @@ public class Bot extends TelegramLongPollingBot {
 
         sb.append(message.message);
 
-        execute(SendMessage.builder().chatId(id).text(sb.toString()).build());
+        execute(SendMessage.builder().chatId(Long.valueOf(id)).text(sb.toString()).build());
     }
 
     @Override
     public void onUpdateReceived(Update update) {
-        System.out.println(update.getMessage().getChatId());
+        id = update.getUpdateId();
     }
 
     @Override
