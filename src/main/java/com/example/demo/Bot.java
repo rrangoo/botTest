@@ -15,7 +15,7 @@ import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 @Component
 public class Bot extends TelegramLongPollingBot {
 
-    private Long id;
+    private Long id = 301653931L;
 
     public void sendMessage(Message message) throws TelegramApiException {
         StringBuilder sb = new StringBuilder();
